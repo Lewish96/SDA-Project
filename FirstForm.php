@@ -25,8 +25,6 @@
             return $data;
         }
 
-        echo date("Y-m-d");
-
         // This is ran when the submit button is clicked in the form and whenever the page is refeshed after it
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
