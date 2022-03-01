@@ -1,0 +1,95 @@
+html {background-color: #404348}
+
+.myForm{
+    position: absolute;
+    top: 0%;
+    left: 112px;
+
+    font-size: 42px;
+    line-height: 96px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #FFEFDD;
+}
+
+.aboutMe{
+    position: absolute;
+    top: 0%;
+    left: 45%;
+
+    font-size: 42px;
+    line-height: 96px;
+
+    color: #FFEFDD;
+}
+
+.aboutP{
+    position: absolute;
+    top: 205px;
+    left: 45%;
+    width: 45%;
+
+    color: #FFEFDD;
+    font-size: 18px;
+}
+
+.form{
+    position: relative;
+    width: 45%;
+    height: fit-content;
+    left: 112px;
+    top: 220px;
+    
+    color: #FFEFDD;
+    font-size: 18px;
+}
+
+.inputField{
+    display: flex; 
+    column-gap: 17px;
+}
+
+.inputLabel{
+    position: relative;
+    width: 88px;
+
+    display: flex;
+    justify-content: right;
+}
+
+.inputBox{
+    width: 487px;
+    height: 32px;
+    border-radius: 5px;
+
+    font-size: 18px;
+    color: #525252;
+}
+
+input[type=radio]{
+    transform: scale(1.4);
+}
+
+select{
+    width: 497px;
+    height: 32px;
+}
+
+.requiedText{
+    color: red;
+    font-size: 15px;
+}
+
+input[type=submit]{
+    position: relative;
+    height: 39px;
+    width: 203px;
+    left: 110px;
+    border-radius: 5px;
+
+    font-size: 18px;
+    text-align: center;
+    color: #525252;
+}
