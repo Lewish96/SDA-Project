@@ -9,8 +9,9 @@
 
     <?php
 
-        $name = $email = $comment = $gender = $nation = "";
-        $nameErr = $emailErr = $genderErr = $nationErr = "";
+        $name = $email = $comment = $gender = $nation = $date = "";
+        $newsletter = false;
+        $nameErr = $emailErr = $genderErr = $nationErr = $dateErr = "";
         require("Nationalities.php");
         $nations = $nationalities;
         
@@ -58,8 +59,19 @@
             } else {
                 $nation = test_input($_POST["nation"]);
             }
+
+            if(empty($_POST["newsletter"])){
+                $newsletter = false;
+            } else {
+                $newsletter = true;
+            }
+
+            if(empty($_POST["birthday"])){
+                $dateErr = "Birthday is required";
+            } else {
+                $date = test_input($_POST["birthday"]);
+            }
         }
-        
     ?>
 
         <div class="myForm"><h1>My Form</h1></div>
@@ -86,6 +98,12 @@
                         <option value="<?php echo $forNation == $nations[0] ? "" : $forNation; ?>" <?php echo $nation == $forNation ? "selected" : "";?>><?php echo $forNation ?></option><?php 
                     } ?>
                 </select> <span class="requiedText"> * <?php echo $nationErr; ?></span> </div><br><br>
+            <!-- The checkbox to signup for newsletter -->
+            <div class="inputField"><label class="inputLabel" for="newsletter">Signup for newsletter: </label>
+                    <input id="newsletter" type="checkbox" name="newsletter" value="true" <?php echo $newsletter == true ? "checked" : ""?>><Label style="font-size: 13px; color: #c2c2c2;">This will be sent to your email</Label></div><br><br>
+            <!-- The date picker for a birthday -->
+            <div class="inputField"><label class="inputLabel" for="birthday">Enter your birth date: </label>
+                <input id="birthday" class="inputBox" type="date" name="birthday" style="width: fit-content;" value="<?php echo $date;?>"> <span class="requiedText"> * <?php echo $dateErr; ?></span> </div><br><br>
             <input type="submit" value="Submit">
         </form>
 
