@@ -78,9 +78,11 @@
             }
         }
     ?>
-
+        <!-- This is now html -->
+        <!-- This creates a header using the style myForm from the stylesheet -->
         <div class="myForm"><h1>My Form</h1></div>
 
+        <!-- This creates a form which when posted via the submit button will be sent to this page -->
         <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <!-- The input for a name -->
             <div class="inputField"><label class="inputLabel" style="top: 7px;" for="name"> Name: </label>
@@ -113,7 +115,8 @@
         </form>
 
         <div class="aboutMe"><h1>About Me</h1></div>
-
+        
+        <!-- This holds a paragraph that is printed to the page -->
         <div><p class="aboutP"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sapien tortor, interdum id facilisis ac, ornare et lectus. Pellentesque eget diam tempus, interdum ex vel, consectetur lacus. Nulla luctus libero vitae augue consequat fermentum. Quisque tempor placerat libero, ut pretium velit varius ut. Suspendisse cursus, velit quis elementum malesuada, nunc justo tempor sem, sed rutrum risus erat nec felis. Curabitur iaculis ut nibh quis pellentesque. Mauris consequat, enim sed facilisis commodo, odio ex dapibus tortor, sed pharetra purus erat non elit. Maecenas erat eros, rutrum ac tincidunt eu, condimentum nec erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse cursus sapien quis ultricies ornare. Praesent ac mi vel nunc ornare ornare. Vestibulum varius varius dignissim. Mauris ligula enim, tincidunt ac vehicula sit amet, congue vitae libero. Quisque consequat eros arcu, blandit ultrices eros dapibus sed.  </p></div>
 
     </body>
