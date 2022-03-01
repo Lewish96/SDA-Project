@@ -9,11 +9,15 @@
 
     <?php
 
-        $name = $email = $comment = $gender = $nation = "";
-        $nameErr = $emailErr = $genderErr = $nationErr = "";
+        $name = $email = $comment = $gender = $nation = $date = "";
+        $newsletter = false;
+        $nameErr = $emailErr = $genderErr = $nationErr = $dateErr = "";
+        // Find the Nationalities script for a reference
+        // This holds an array of nationalities in a different script to save space
         require("Nationalities.php");
         $nations = $nationalities;
         
+        // This edits the inputted data to make it useable and encrypt it
         function test_input($data){
             $data = trim($data);
             $data = stripslashes($data);
@@ -21,8 +25,10 @@
             return $data;
         }
 
+        // This is ran when the submit button is clicked in the form and whenever the page is refeshed after it
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+            // If the name input is empty the error message will display otherwise it will format the data and check if it is valid and diplay another error if not
             if(empty($_POST["name"])){
                 $nameErr = "Name is required";
             } else {
@@ -58,12 +64,25 @@
             } else {
                 $nation = test_input($_POST["nation"]);
             }
-        }
-        
-    ?>
 
+            if(empty($_POST["newsletter"])){
+                $newsletter = false;
+            } else {
+                $newsletter = true;
+            }
+
+            if(empty($_POST["birthday"])){
+                $dateErr = "Birthday is required";
+            } else {
+                $date = test_input($_POST["birthday"]);
+            }
+        }
+    ?>
+        <!-- This is now html -->
+        <!-- This creates a header using the style myForm from the stylesheet -->
         <div class="myForm"><h1>My Form</h1></div>
 
+        <!-- This creates a form which when posted via the submit button will be sent to this page -->
         <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <!-- The input for a name -->
             <div class="inputField"><label class="inputLabel" style="top: 7px;" for="name"> Name: </label>
@@ -86,11 +105,18 @@
                         <option value="<?php echo $forNation == $nations[0] ? "" : $forNation; ?>" <?php echo $nation == $forNation ? "selected" : "";?>><?php echo $forNation ?></option><?php 
                     } ?>
                 </select> <span class="requiedText"> * <?php echo $nationErr; ?></span> </div><br><br>
+            <!-- The checkbox to signup for newsletter -->
+            <div class="inputField"><label class="inputLabel" for="newsletter">Sign up for newsletter: </label>
+                    <input id="newsletter" type="checkbox" name="newsletter" value="true" <?php echo $newsletter == true ? "checked" : ""?>><Label style="font-size: 13px; color: #c2c2c2;">This will be sent to your email</Label></div><br><br>
+            <!-- The date picker for a birthday -->
+            <div class="inputField"><label class="inputLabel" for="birthday">Enter your birth date: </label>
+                <input id="birthday" class="inputBox" type="date" name="birthday" style="width: fit-content;" value="<?php echo $date;?>" max="<?php echo date("Y-m-d") ?>"> <span class="requiedText"> * <?php echo $dateErr; ?></span> </div><br><br>
             <input type="submit" value="Submit">
         </form>
 
         <div class="aboutMe"><h1>About Me</h1></div>
-
+        
+        <!-- This holds a paragraph that is printed to the page -->
         <div><p class="aboutP"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sapien tortor, interdum id facilisis ac, ornare et lectus. Pellentesque eget diam tempus, interdum ex vel, consectetur lacus. Nulla luctus libero vitae augue consequat fermentum. Quisque tempor placerat libero, ut pretium velit varius ut. Suspendisse cursus, velit quis elementum malesuada, nunc justo tempor sem, sed rutrum risus erat nec felis. Curabitur iaculis ut nibh quis pellentesque. Mauris consequat, enim sed facilisis commodo, odio ex dapibus tortor, sed pharetra purus erat non elit. Maecenas erat eros, rutrum ac tincidunt eu, condimentum nec erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse cursus sapien quis ultricies ornare. Praesent ac mi vel nunc ornare ornare. Vestibulum varius varius dignissim. Mauris ligula enim, tincidunt ac vehicula sit amet, congue vitae libero. Quisque consequat eros arcu, blandit ultrices eros dapibus sed.  </p></div>
 
     </body>
