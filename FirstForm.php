@@ -106,7 +106,7 @@
                     } ?>
                 </select> <span class="requiedText"> * <?php echo $nationErr; ?></span> </div><br><br>
             <!-- The checkbox to signup for newsletter -->
-            <div class="inputField"><label class="inputLabel" for="newsletter">Signup for newsletter: </label>
+            <div class="inputField"><label class="inputLabel" for="newsletter">Sign up for newsletter: </label>
                     <input id="newsletter" type="checkbox" name="newsletter" value="true" <?php echo $newsletter == true ? "checked" : ""?>><Label style="font-size: 13px; color: #c2c2c2;">This will be sent to your email</Label></div><br><br>
             <!-- The date picker for a birthday -->
             <div class="inputField"><label class="inputLabel" for="birthday">Enter your birth date: </label>
