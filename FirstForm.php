@@ -12,9 +12,12 @@
         $name = $email = $comment = $gender = $nation = $date = "";
         $newsletter = false;
         $nameErr = $emailErr = $genderErr = $nationErr = $dateErr = "";
+        // Find the Nationalities script for a reference
+        // This holds an array of nationalities in a different script to save space
         require("Nationalities.php");
         $nations = $nationalities;
         
+        // This edits the inputted data to make it useable and encrypt it
         function test_input($data){
             $data = trim($data);
             $data = stripslashes($data);
@@ -22,8 +25,12 @@
             return $data;
         }
 
+        echo date("Y-m-d");
+
+        // This is ran when the submit button is clicked in the form and whenever the page is refeshed after it
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+            // If the name input is empty the error message will display otherwise it will format the data and check if it is valid and diplay another error if not
             if(empty($_POST["name"])){
                 $nameErr = "Name is required";
             } else {
@@ -103,7 +110,7 @@
                     <input id="newsletter" type="checkbox" name="newsletter" value="true" <?php echo $newsletter == true ? "checked" : ""?>><Label style="font-size: 13px; color: #c2c2c2;">This will be sent to your email</Label></div><br><br>
             <!-- The date picker for a birthday -->
             <div class="inputField"><label class="inputLabel" for="birthday">Enter your birth date: </label>
-                <input id="birthday" class="inputBox" type="date" name="birthday" style="width: fit-content;" value="<?php echo $date;?>"> <span class="requiedText"> * <?php echo $dateErr; ?></span> </div><br><br>
+                <input id="birthday" class="inputBox" type="date" name="birthday" style="width: fit-content;" value="<?php echo $date;?>" max="<?php echo date("Y-m-d") ?>"> <span class="requiedText"> * <?php echo $dateErr; ?></span> </div><br><br>
             <input type="submit" value="Submit">
         </form>
 
